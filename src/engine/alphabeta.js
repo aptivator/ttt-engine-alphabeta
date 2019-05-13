@@ -2,7 +2,7 @@ import {opponent} from '../_lib/vars';
 import tttUtils   from '../_lib/ttt-utils';
 
 export function alphabeta(params) {
-  let {grid: _grid, ch, _ch = ch, depth = 0} = params;
+  let {grid: _grid, ch, _ch = ch, depth = 0, _alphabeta = alphabeta} = params;
   let {alpha = -Infinity, beta = Infinity, level = Infinity} = params;
   
   if(depth > level || tttUtils.isFullAndDrawn(_grid) || depth > level) {
@@ -29,7 +29,7 @@ export function alphabeta(params) {
   
   for(let cell of blanks) {
     grid[cell] = _ch;
-    let score = alphabeta({grid, ch, _ch: opponent[_ch], alpha, beta, level, depth: depth + 1});
+    let score = _alphabeta({grid, ch, _ch: opponent[_ch], alpha, beta, level, _alphabeta, depth: depth + 1});
     grid[cell] = null;
 
     if(maximizing && score > minmax) {

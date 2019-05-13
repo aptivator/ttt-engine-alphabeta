@@ -1,4 +1,5 @@
 import {expect}    from 'chai';
+import sinon       from 'sinon';
 import {alphabeta} from '../../src/engine/alphabeta';
 
 describe('aphabeta() engine', () => {
@@ -67,4 +68,16 @@ describe('aphabeta() engine', () => {
     let move = alphabeta({grid, ch: 'o', level: 0});
     expect(move).to.deep.equal({move: 1, ch: 'o'});
   });
+  
+  it('is called fewer times for a similar board compared to naive minimax()', () => {
+    let _alphabeta = sinon.spy(alphabeta);
+    let grid = [
+      null, null, null,
+      null, null, null,
+      null, null, null
+    ];
+    
+    _alphabeta({grid, ch: 'x', _alphabeta});
+    expect(_alphabeta.callCount).to.be.below(500000);
+  }).timeout(15000);
 });
