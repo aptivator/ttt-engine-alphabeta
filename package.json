@@ -1,0 +1,39 @@
+{
+  "name": "ttt-engine-alphabeta",
+  "version": "0.0.1",
+  "description": "tic-tac-toe game engine with minimax search and alpha-beta pruning",
+  "main": "dist/index.js",
+  "jsnext:main": "dist/index.es.js",
+  "scripts": {
+    "build": "rollup -c",
+    "test": "mocha ./test/**/*.test.js ./test/*.test.js --require @babel/register",
+    "test:coverage": "nyc --reporter=text --cache=false npm run test",
+    "dev": "npm test & run-when-changed --watch \"src/**/*.js\" --watch \"test/**/*.js\" --exec \"npm test\""
+  },
+  "author": "",
+  "license": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "bugs": {
+    "url": ""
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.4.4",
+    "@babel/core": "^7.4.4",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.4.4",
+    "@babel/register": "^7.4.4",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "chai": "^4.2.0",
+    "lodash": "^4.17.11",
+    "mocha": "^3.5.3",
+    "nyc": "^14.1.0",
+    "rollup": "^1.11.0",
+    "rollup-plugin-babel": "^4.3.2",
+    "rollup-watch": "^3.2.2",
+    "run-when-changed": "^2.1.0"
+  },
+  "dependencies": {}
+}
